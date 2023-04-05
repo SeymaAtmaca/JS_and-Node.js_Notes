@@ -105,3 +105,54 @@ console.log(Object.entries(obj1)) // [key, value] çiftlerinden oluşan bir arra
 // document.getElementById("demo").innerHTML = JSON.stringify(obj1); // obje string e cevirilir ve demo id' sine basilir.
 // let stringobj = JSON.stringify(person) ; 
 // let newPerson = JSON.parse(stringobj) // stringify in tersi olarak, string i objeye cevirir.
+
+
+
+
+// objelere metot ekleme ;
+let user1 = {
+    firstname : "Seyma",
+    surname : "Atmaca",
+    programming : true,
+    languages : ["Python", "JS"],
+    isFullName : function() {
+        return `${this.firstname}  ${this.surname}`
+    }
+}
+
+console.log("Object metods : ", user1.isFullName())
+
+
+
+// sinifa prototype ile fonksiyon ekleme ;
+function Insan(name, age) {
+    this.name = name,
+    this.age = age
+} 
+
+Insan.prototype.yeni = () => {console.log("Yeni fonskiyon")}
+let person = new Insan("ayse", 30)
+person.yeni()
+
+
+
+
+// Object ve Array Destructuring işlemleri 
+let settings = {
+    userName : "lorem",
+    password : "ıpsum",
+    isActive : true,
+    ip : "192.168.1.7",
+    serverName : "google.com"
+}
+
+
+// bilgileri cikartip bir degisken olarak kullanabiliyoruz. 
+// kalan bilgileri settings_info icine atiyor
+let {userName : user_name, password, isActive, ...settings_info} = settings
+console.log("Destructuring : ", user_name, isActive, settings_info)
+
+
+let scores = [100,200,300,400]
+let [scores_1, score_2, ...scores_] = scores
+console.log("Array destructuring : ", scores_1, scores_)
